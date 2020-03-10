@@ -25,7 +25,6 @@ object RevIndexer {
    * Read data from input directory
    * @param dir
    * @param spark
-   * @return Dataset
    */
   def readDocuments(dir: String, spark: SparkSession): DataFrame = {
     spark.read.textFile(dir).toDF("line")
