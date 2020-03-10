@@ -2,7 +2,7 @@ package com.cf.revindex
 
 import com.cf.util.Log
 import org.apache.log4j.Logger
-import org.apache.spark.sql.{DataFrame, Dataset, Row, SparkSession}
+import org.apache.spark.sql.{DataFrame, SparkSession}
 import Transform._
 
 object RevIndexer {
@@ -40,7 +40,6 @@ object RevIndexer {
       .builder()
       .appName(appName)
       .getOrCreate();
-    log.debug("Spark Session Created...")
     ss
   }
 

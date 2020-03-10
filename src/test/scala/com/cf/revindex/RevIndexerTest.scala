@@ -120,7 +120,6 @@ class RevIndexerTest extends FunSuite with Matchers {
       .builder()
       .master("local[*]")
       .getOrCreate();
-    log.debug("Spark Session Created...")
     ss
   }
 
