@@ -28,8 +28,10 @@ spark-submit --master <yarn/local[*]> \
 <Path/To/>rev-index-assembly-0.1.0-SNAPSHOT.jar \
 --sourcePath <Path of the document files> \
 --targetPath <Path to write output> \
---documentDictionaryPath <OPTIONAL: Path to store document Dictionary> \
---wordDictionaryPath <OPTIONAL: Path to store word Dictionary>
+--documentDictionaryPath <OPTIONAL: File Path to store document Dictionary> \
+--wordDictionaryPath <OPTIONAL: File Path to store word Dictionary>
+
+Note: Have ignored container resource configuration (executors, cores, memory) for clarity. 
 ```
 
 # Code Links...
