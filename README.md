@@ -5,7 +5,7 @@ This project creates Inverted Index from a collection of documents
 # Assumption...
 
 The following assumption has been made for the project,
-1. Characters in set `[a-z][A-Z][0-9]` are considered as valid character of a word. Any other characters (Example: `;:- _`  etc...) are considered as delimiters (so never part of the word)  
+1. Characters in set `[a-z][A-Z][0-9]` are considered as valid characters of a word. Any other characters (Example: `;:- _`  etc...) are considered as delimiters (so never part of the word)  
  
 # How to compile?
 
