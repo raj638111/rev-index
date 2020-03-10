@@ -1,0 +1,2 @@
+doc2; this: is-a number
+doc2! second, line
