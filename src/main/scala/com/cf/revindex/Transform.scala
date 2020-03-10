@@ -85,7 +85,7 @@ object Transform {
     def assignFileIdsToWordId(): DataFrame = {
       val sortFileIds =
         udf((file_ids: scala.collection.mutable.WrappedArray[String]) => {
-        file_ids.sortWith(_ < _)
+        file_ids.sortWith(_.toInt < _.toInt)
       })
       val concatenate =
         udf((wordId: String, fieldIds: scala.collection.mutable.WrappedArray[String]) => {
@@ -102,8 +102,9 @@ object Transform {
      * Write the result
      */
     def writeResult(outputDir: String): Unit = {
-      df.select("result")
-        .sort("result")
+      df.orderBy($"word_id")
+        .select("result")
+        //.sort($"result")
         .repartition(1)
         .write
         .format("text")
@@ -121,7 +122,7 @@ object Transform {
         case null =>
           log.warn("Path not provided to write Document Dictionary")
         case _ =>
-          val str = map.toList.sortWith(_._2 < _._2).map{ case (key, value) =>
+          val str = map.toList.sortWith(_._1 < _._1).map{ case (key, value) =>
             s"$key,$value"
           }.mkString("\n")
           val conf = spark.sparkContext.hadoopConfiguration

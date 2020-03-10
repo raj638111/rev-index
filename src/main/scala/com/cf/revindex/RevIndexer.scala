@@ -10,13 +10,13 @@ object RevIndexer {
   val log: Logger = Log.getLogger(this.getClass.getName)
 
   def main(args: Array[String]): Unit = {
-    val param = ParamRevIndexer()
+    val param = ParamRevIndexer().parse(args)
     val spark = getSparkSession(this.getClass.getName)
     readDocuments(param.sourcePath, spark)
       .addFileName()                           // Assign file name to each row
       .addFileId(param.documentDictionaryPath) // Assign file ID for each file
       .splitLineNexplode()                     // Split the line into words & explode
-      .addWordId()                             // Assign id for each word
+      .addWordId(param.wordDictionaryPath)     // Assign id for each word
       .assignFileIdsToWordId()                 // Map file IDs to word ID
       .writeResult(param.targetPath)           // Sort & write the result
   }
