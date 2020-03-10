@@ -40,6 +40,7 @@ object RevIndexer {
       .builder()
       .appName(appName)
       .getOrCreate();
+    log.info("Spark context created")
     ss
   }
 

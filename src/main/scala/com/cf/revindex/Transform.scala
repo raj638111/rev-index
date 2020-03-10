@@ -102,6 +102,7 @@ object Transform {
      * Write the result
      */
     def writeResult(outputDir: String): Unit = {
+      log.info(s"Writing result to location: $outputDir")
       df.orderBy($"word_id")
         .select("result")
         //.sort($"result")
@@ -130,6 +131,7 @@ object Transform {
           val fs = path.getFileSystem(conf)
           val os = fs.create(path)
           val is = new ByteArrayInputStream(str.getBytes)
+          log.info(s"Writing dictionary to location: $location")
           IOUtils.copyBytes(is, os, conf)
       }
     }
