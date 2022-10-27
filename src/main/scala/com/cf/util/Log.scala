@@ -16,7 +16,6 @@ object Log {
   setLogger(Logger.getLogger("com.cf"), Level.DEBUG, logLevel)
 
   def setLogger(logger: Logger, logLevel: Level, thresholdLevel: Level): Unit = {
-    println("Setting Root Logger...")
     logger.setLevel(logLevel)
     logger.setAdditivity(false)
     setConsoleAppender(logger, thresholdLevel)
